@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <style>
+        body {
+            /* padding: 2vw; */
+            margin: 2.5vw;
+        }
+
+        .first input {
+            padding: 8px;
+            width: 35vw;
+            border: 1px solid blue;
+            border-radius: 5px;
+            margin: 7px;
+            /* height: 2vw; */
+        }
+
+        .second input {
+            padding: 8px;
+            width: 35vw;
+            border: 1px solid blue;
+            border-radius: 5px;
+            margin: 7px;
+            /* height: 2vw; */
+        }
+
+        .third input {
+            padding: 8px;
+            width: 35vw;
+            border: 1px solid blue;
+            border-radius: 5px;
+            margin: 7px;
+            /* height: 2vw; */
+        }
+
+        form span {
+            color: red;
+            /* text-transform: uppercase; */
+        }
+
+        .fourth input {
+            padding: 8px;
+            width: 35vw;
+            border: 1px solid blue;
+            border-radius: 5px;
+            margin: 7px;
+            /* height: 2vw; */
+        }
+
+        #btn {
+            background-color: rgb(114, 114, 249);
+            color: white;
+            width: 70px;
+            height: 25px;
+            border-radius: 5px;
+        }
+
+        #btn:hover {
+            background-color: lightblue;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to from</h1>
+    <form action="/myaction.php" name="theform" onsubmit="return validateForm()" method="post">
+        <div class="first" id="name">
+            Name: <input placeholder="enter your name" type="text" name="fname"><b></b><span class="Nerror"></span>
+        </div><br>
+
+        <div class="second" id="pass">
+            Password: <input placeholder="enter password" type="password" name="fpass"><b></b><span
+                class="Nerror"></span>
+        </div><br>
+
+        <div class="third" id="email">
+            email: <input placeholder="enter your emailid" type="email" name="femail"><b></b><span
+                class="Nerror"></span>
+        </div><br>
+
+        <div class="fourth" id="phone">
+            Phone: <input placeholder="enter your contact number" type="phone" name="fphone"><b></b><span
+                class="Nerror"></span>
+        </div><br>
+        <input id="btn" type="submit" value="submit">
+    </form>
+
+</body>
+
+<script>
+    console.log("welcome")
+    function clearError() {
+        error = document.getElementsByClassName("Nerror");
+        for (let item of error) {
+            item.innerText = ""
+        }
+    }
+    function seterror(id, error) {
+        element = document.getElementById(id);
+        element.getElementsByClassName("Nerror")[0].innerText = error;
+        // element.getElementsByClassName("pass")[0].innerText = error;
+    }
+
+
+    function validateForm() {
+        var returnval = true;
+        clearError();
+
+        var name = document.forms['theform']["fname"].value;
+
+        if (name.length < 5) {
+            seterror("name", "*length is too short");
+            returnval = false;
+        }
+        if (name.length == 0) {
+            seterror("name", "*required")
+            returnval = false;
+        }
+        var pass = document.forms['theform']["fpass"].value;
+        if (pass.length == 0) {
+            seterror("pass", "*required")
+            returnval = false;
+        }
+        else if (pass.length < 6) {
+            seterror("pass", "* password must be six chracter long")
+            returnval = false;
+        }
+        var phone = document.forms['theform']["fphone"].value;
+        if (phone.length == 0) {
+            seterror("phone", "*required")
+            returnval = false;
+        }
+        // var phone = document.forms['theform']['fphone'].value
+        if (phone.length < 10) {
+            seterror("phone", "* phone number should be of 10 digit")
+            returnval = false;
+        }
+
+        var email = document.forms['theform']["femail"].value;
+        if (email.length == 0) {
+            seterror("email", "*required")
+            returnval = false;
+        }
+
+
+        return returnval;
+
+    }
+
+</script>
+
+</html>
