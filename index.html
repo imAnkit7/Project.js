@@ -6,16 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>form validation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/613c7cc12e.js" crossorigin="anonymous"></script>
     <style>
-        body {
+        .container {
             /* padding: 2vw; */
             margin: 2.5vw;
+            /* display: flex; */
         }
 
         .first input {
             padding: 8px;
             width: 35vw;
-            border: 1px solid blue;
+            border: 1px solid black;
             border-radius: 5px;
             margin: 7px;
             /* height: 2vw; */
@@ -24,7 +27,7 @@
         .second input {
             padding: 8px;
             width: 35vw;
-            border: 1px solid blue;
+            border: 1px solid black;
             border-radius: 5px;
             margin: 7px;
             /* height: 2vw; */
@@ -33,7 +36,7 @@
         .third input {
             padding: 8px;
             width: 35vw;
-            border: 1px solid blue;
+            border: 1px solid black;
             border-radius: 5px;
             margin: 7px;
             /* height: 2vw; */
@@ -47,7 +50,7 @@
         .fourth input {
             padding: 8px;
             width: 35vw;
-            border: 1px solid blue;
+            border: 1px solid black;
             border-radius: 5px;
             margin: 7px;
             /* height: 2vw; */
@@ -65,11 +68,70 @@
             background-color: lightblue;
             color: black;
         }
+        #bar{display: none;}
+        .header2 li{
+            list-style: none;
+            text-decoration: none;
+
+            margin: 5rem;
+        }
+        .header2 li a{
+            text-decoration: none;
+            color: white;
+        }
+        .header2{
+            display: none;
+            /* display:flex; */
+            /* align-items: center; */
+            justify-content: center;
+            flex-direction:row-reverse;
+        }
+        @media screen and (max-width:590px) {
+            #bar{
+                display:block;
+            }
+            #nav{
+                display: none;
+            }
+            .header2{
+                display: none;
+                position: absolute;
+                font-size: 4vw;
+                /* top: 0; */
+                right: 0;
+                z-index: 1000;
+            } 
+        }
     </style>
 </head>
 
 <body>
-    <h1>Welcome to from</h1>
+    <div class="header">
+        <!-- <span style="color:red;">INT</span>GRAL -->
+        <h2><span style="color:white;"><b>INTEGRAL</b></span></h2>
+        <nav id="nav">
+            <ul>
+                <li><a href="default.asp">Home</a></li>
+                <li><a href="news.asp">News</a></li>
+                <li><a href="contact.asp">Contact</a></li>
+                <li><a href="about.asp">About</a></li>
+            </ul>
+        </nav>
+        <i id="bar" class="fa-solid fa-bars " ></i>
+    </div>
+    <div class="header2" style="height: 100vh; width: 100%;background-color: rgb(217, 64, 255); ">
+        <i class="fa-regular fa-circle-xmark " style=" margin:10px; padding:2px; "></i>
+        <nav>
+            <ul>
+                <li style="color: white;"><a href="iul.ac.in">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        
+    <h1>Welcome to form</h1>
     <form action="/myaction.php" name="theform" onsubmit="return validateForm()" method="post">
         <div class="first" id="name">
             Name: <input placeholder="enter your name" type="text" name="fname"><b></b><span class="Nerror"></span>
@@ -80,19 +142,20 @@
         </div><br>
 
         <div class="first" id="name">
-            Address: <input placeholder="enter your address" type="address" name="faddress"><b></b><span class="Nerror"></span>
+            Address: <input placeholder="enter your address" type="address" name="faddress"><b></b><span
+                class="Nerror"></span>
         </div><br>
-        
+
         <div id="box2">
             <h3>Your favorite subjects</h3>
-            <input type="checkbox" name="maths" value="maths" id=>Maths  <br>
+            <input type="checkbox" name="maths" value="maths" id=>Maths <br>
             <input type="checkbox" name="Bio" value="Bio">Biology <br>
             <input type="checkbox" name="English" value="English">English <br>
-            <input type="checkbox" name="computer" value="computer">Computer Science <br> 
-          </div><br>
+            <input type="checkbox" name="computer" value="computer">Computer Science <br>
+        </div><br>
 
-          Gender : <input type="radio" value="male" name="gender" >Male 
-          <input type="radio" value="female" name="gender" >Female <br><br>
+        Gender : <input type="radio" value="male" name="gender">Male
+        <input type="radio" value="female" name="gender">Female <br><br>
 
         <div class="second" id="pass">
             Password: <input placeholder="enter password" type="password" name="fpass"><b></b><span
@@ -105,12 +168,12 @@
         </div><br>
 
         <div class="fourth" id="phone">
-            Phone: <input placeholder="enter your contact number" type="phone" name="fphone"><b></b><span
+            Phone: <input placeholder="enter your contact no." type="phone" name="fphone"><b></b><span
                 class="Nerror"></span>
         </div><br>
-        <a href="login.html">  <input id="btn" type="submit" value="submit"></a>
+        <a href="iul.ac.in" target="_blank"><input id="btn" type="submit" value="submit"></a>
     </form>
-
+</div>
 </body>
 
 <script>
@@ -172,6 +235,16 @@
         return returnval;
 
     }
+    setTimeout(() => {
+        document.body.style.backgroundColor = "wheat"
+    }, 5000)
+
+document.getElementsByClassName("fa-bars")[0].addEventListener("click",()=>{
+    document.getElementsByClassName("header2")[0].style.display="flex"
+ })
+document.getElementsByClassName("fa-circle-xmark")[0].addEventListener("click",()=>{
+    document.getElementsByClassName("header2")[0].style.display="none"
+ })
 
 </script>
 

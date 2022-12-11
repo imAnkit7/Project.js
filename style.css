@@ -1,0 +1,20 @@
+*{
+    margin:.5px;
+    padding:0;
+}
+.header{
+    display: flex;
+    justify-content: space-around;
+    background-color:rgb(212, 35, 212);
+    align-items: center;
+    padding:8px;
+}
+.header li{
+  display: inline;
+  margin: 1.4rem;
+}
+.header a{
+    text-decoration: none;
+    color:white;
+    font-size: 1.5vw;
+}
